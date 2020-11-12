@@ -23,6 +23,24 @@ export class EditQuizComponent implements OnInit {
   focusedQuiz;
   focusedQuestion;
   isValid = false;
+
+  newOption:String;
+  options:String [] = ["",""]; 
+
+
+  addOption(){
+    this.options.push(this.newOption);
+    this.newOption = '';
+	console.log("An option is added! Array length is", this.options.length);
+  }
+
+  removeOption(){
+	  console.log("An option is deleted!");
+	if (this.options.length > 2)
+    this.options.pop();
+  }
+
+
   /** validate ()
    * validates that the quiz topic and the questions exist and the difficulty has been changed
    * if it does not than the save button does not appear/is faded so it cannot be submitted
@@ -112,11 +130,12 @@ export class EditQuizComponent implements OnInit {
         question: null,
         quizId: this.focusedQuiz.quizId,
         questionValue: null,
-        option1: null,
-        option2: null,
-        option3: null,
-        option4: null,
-        option5: null,
+        options: null,
+        // option1: null,
+        // option2: null,
+        // option3: null,
+        // option4: null,
+        // option5: null,
         quiz: {},
       };
     } else {
