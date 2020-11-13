@@ -38,7 +38,7 @@ export class QuizService {
     questionId: 0,
     questionValue: 0,
     question: '',
-    options: '',
+    options: [],
     // option1: '',
     // option2: '',
     // option3: '',

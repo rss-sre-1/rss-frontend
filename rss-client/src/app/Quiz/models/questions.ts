@@ -2,7 +2,7 @@ export interface Questions {
   questionId: number;
   questionValue: number;
   question: string;
-  options: string;
+  options: [];
   // option1: string;
   // option2: string;
   // option3: string;

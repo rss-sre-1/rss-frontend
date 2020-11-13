@@ -126,7 +126,7 @@ export class EditQuizComponent implements OnInit {
         question: null,
         quizId: this.focusedQuiz.quizId,
         questionValue: null,
-        options: null,
+        options: [],
         // option1: null,
         // option2: null,
         // option3: null,
