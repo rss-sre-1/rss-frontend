@@ -21,7 +21,7 @@ spec:
         app: rss-client
     spec:
       containers:
-      - image: 855430746673.dkr.ecr.us-east-1.amazonaws.com/matt-oberlies-sre-p3-frontend
+      - image: 855430746673.dkr.ecr.us-east-1.amazonaws.com/matt-oberlies-sre-p3-rss-frontend
         imagePullPolicy: Always
         name: rss-client
         ports:
