@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AccountService {
-  url = `${environment.accountServiceUrl}/account`;
+  //url = `${environment.accountServiceUrl}/account`;
+  url = `${environment.accountServiceUrl}`;
   mockAccounts: Account[];
 
   generateMockAccounts(userId): Account[] {
