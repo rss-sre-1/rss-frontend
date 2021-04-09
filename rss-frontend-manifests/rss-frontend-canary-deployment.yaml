@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rss-frontend-deployment
+  name: rss-frontend-canary-deployment
   namespace: rss-frontend
   labels:
     app: rss-client
@@ -9,18 +9,18 @@ metadata:
 #    deployment.kubernetes.io/revision: "1"
 spec:
 #  progressDeadlineSeconds: 600
-  replicas: 1
+  replicas: 0
 #  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: rss-client
-	  track: canary
+      track: canary
   template:
     metadata:
       creationTimestamp: null
       labels:
         app: rss-client
-		track: canary
+        track: canary
     spec:
       containers:
       - image: 855430746673.dkr.ecr.us-east-1.amazonaws.com/matt-oberlies-sre-p3-rss-frontend
