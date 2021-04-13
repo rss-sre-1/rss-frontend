@@ -32,7 +32,7 @@ pipeline {
         stage('Create Canary') {
             steps {
                 // Send http request to trigger create_canary GitHub workflow in repository
-                sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN \" https://api.github.com/repos/rss-sre-1/rss-frontend/actions/workflows/create_canary.yml/dispatches -d \'{\"ref\":\"dev\"}\''
+                sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN \" https://api.github.com/repos/rss-sre-1/rss-frontend/actions/workflows/create_canary.yml/dispatches -d \'{\"ref\":\"master\"}\''
             }
         }
 
@@ -41,9 +41,9 @@ pipeline {
                script {
                    try{
                        input 'Promote Canary to Production?'
-                       sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN \" https://api.github.com/repos/rss-sre-1/rss-frontend/actions/workflows/promote_canary.yml/dispatches -d \'{\"ref\":\"dev\"}\''
+                       sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN \" https://api.github.com/repos/rss-sre-1/rss-frontend/actions/workflows/promote_canary.yml/dispatches -d \'{\"ref\":\"master\"}\''
                    } catch (error) {
-                       sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN \" https://api.github.com/repos/rss-sre-1/rss-frontend/actions/workflows/reject_canary.yml/dispatches -d \'{\"ref\":\"dev\"}\''
+                       sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN \" https://api.github.com/repos/rss-sre-1/rss-frontend/actions/workflows/reject_canary.yml/dispatches -d \'{\"ref\":\"master\"}\''
                    }
                }
            }
