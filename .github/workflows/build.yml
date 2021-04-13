@@ -14,7 +14,7 @@ env:
   JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }} # new for handoffOne branch
   JENKINS_USER: frontend
 jobs:
-  sonar_maven_build:
+  docker_build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,7 +42,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
   handoff_to_jenkins:
-    needs: [sonar_maven_build]
+    needs: [docker_build]
     name: Handoff to Jenkins for Deployments
     runs-on: ubuntu-latest
     steps:
