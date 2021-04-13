@@ -23,13 +23,6 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Build with Maven and Sonar
-        run: |
-          cd ./$PROJECT_ROOT 
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       # ---[ Configuring AWS credentials and Logging in to ECR ]---
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
