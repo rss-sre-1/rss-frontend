@@ -47,7 +47,42 @@ export class LoginPageComponent implements OnInit {
   }
 
   async submitForm() {
-    this.user = {
+        if (this.loginForm.get('email') == 'a@a.net')
+    {
+      this.user = {
+        userId: 2,
+        email: 'a@a.net',
+        password: 'password',
+        profilePic: null,
+        firstName: 'a',
+        lastName: 'z',
+        admin: false,
+        userDiscounted: false,
+        userDiscount: 0
+      }
+      this.userService.isLoggedIn = true;
+      this.isLoggedIn.emit(true);
+      this.userLogin.emit(this.user);
+      this.userService.changeUser(this.user);
+
+    } else {
+      this.user = {
+        userId: 1,
+        email: 'ehj@asdsd.com',
+        password: 'asdafasf',
+        profilePic: null,
+        firstName: 'asdsa',
+        lastName: 'ssdsa',
+        admin: true,
+        userDiscounted: true,
+        userDiscount: 1
+      }
+      this.userService.isLoggedIn = true;
+      this.isLoggedIn.emit(true);
+      this.userLogin.emit(this.user);
+      this.userService.changeUser(this.user);
+    }
+    /*this.user = {
       userId: 1,
       email: 'ehj@asdsd.com',
       password: 'asdafasf',
@@ -61,7 +96,7 @@ export class LoginPageComponent implements OnInit {
     this.userService.isLoggedIn = true;
     this.isLoggedIn.emit(true);
     this.userLogin.emit(this.user);
-    this.userService.changeUser(this.user);
+    this.userService.changeUser(this.user);*/
     /*
     const formValue = this.loginForm.value;
     this.userService.login(formValue).subscribe((res) => {
