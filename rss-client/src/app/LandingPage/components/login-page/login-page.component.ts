@@ -60,6 +60,7 @@ export class LoginPageComponent implements OnInit {
     }
     this.userService.isLoggedIn = true;
     this.isLoggedIn.emit(true);
+    this.userLogin.emit(this.user);
     this.userService.changeUser(this.user);
     /*
     const formValue = this.loginForm.value;
